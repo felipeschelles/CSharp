@@ -10,13 +10,13 @@ namespace PrimeiraAula
     {
         static void Main(string[] args)
         {
-            String nome = string.Empty;
+            Pessoa p = new Pessoa();
 
 
             Console.WriteLine("Escreva seu nome: ");
-            nome = Console.ReadLine();
+            p.Nome = Console.ReadLine();
 
-            Console.WriteLine("Ola " + nome);
+            Console.WriteLine("Ola " + p.Nome);
             Console.ReadKey();
         }
     }
