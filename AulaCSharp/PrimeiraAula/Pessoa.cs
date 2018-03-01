@@ -8,6 +8,8 @@ namespace PrimeiraAula
 {
     class Pessoa
     {
-        public int MyProperty { get; set; }
+        public int PessoaID { get; set; }
+
+        public String Nome { get; set; }
     }
 }
