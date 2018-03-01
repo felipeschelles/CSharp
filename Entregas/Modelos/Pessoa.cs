@@ -1,7 +1,7 @@
 ﻿
 namespace Modelos
 {
-    class Pessoa
+    public class Pessoa
     {
         public int PessoaID { get; set; }
 
