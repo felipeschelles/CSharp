@@ -9,6 +9,8 @@ namespace Modelos
 
         public int Cpf { get; set; }
 
+        public int EnderecoID { get; set; }
+
         public Endereco _Endereco { get; set; }
     }
 }
