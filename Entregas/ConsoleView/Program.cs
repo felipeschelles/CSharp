@@ -7,14 +7,14 @@ namespace ConsoleView
     class Program
     {
 
-        enum OpcoesMenuPrincipal
+        enum OpcoesMenuPrincipal  // Enumeradores
         {
-            CadastrarCliente = 1,
-            PesquisarCliente = 2,
-            EditarCliente = 3,
-            ExcluirCliente = 4,
-            LimparTela = 5,
-            Sair = 6,
+            CadastrarCliente=1,
+            PesquisarCliente=2,
+            EditarCliente=3,
+            ExcluirCliente=4,
+            LimparTela=5,
+            Sair=6,
         }
         private static OpcoesMenuPrincipal Menu()
         {
@@ -48,6 +48,7 @@ namespace ConsoleView
                 switch (opcaoDigitada)
                 {
                     case OpcoesMenuPrincipal.CadastrarCliente:
+                        CadastrarCliente();
                         break;
                     case OpcoesMenuPrincipal.PesquisarCliente:
                         break;
@@ -86,11 +87,44 @@ namespace ConsoleView
             Console.WriteLine("");
 
             Console.WriteLine("Digite o cpf:");
-            cliente.Cpf = Console.Read();
+            cliente.Cpf = int.Parse(Console.ReadLine());
 
             Console.WriteLine("");
 
-         
+
+            cliente._Endereco = new Endereco();
+
+            Console.WriteLine("Endereço");
+            Console.WriteLine("");
+            Console.WriteLine("Digite o nome da Rua:");
+            cliente._Endereco.Rua = Console.ReadLine();
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Digite o numero:");
+            cliente._Endereco.Numero = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Digite complemento:");
+            cliente._Endereco.Complemento = Console.ReadLine();
+
+
+            ExbirCliente(cliente);
+
+
+
+        }
+
+        private static void ExbirCliente(Cliente cliente)
+        {
+            Console.WriteLine("Nome do cliente: " + cliente.Nome);
+            Console.WriteLine("CPF do cliente: " + cliente.Cpf);
+            Console.WriteLine("");
+            Console.WriteLine("Endereço do cliente");
+            Console.WriteLine("Nome da Rua: " + cliente._Endereco.Rua);
+            Console.WriteLine("Numero da casa: " + cliente._Endereco.Numero);
+            Console.WriteLine("Complemento: " + cliente._Endereco.Complemento);
 
 
         }
