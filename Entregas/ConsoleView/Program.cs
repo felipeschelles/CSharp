@@ -1,5 +1,6 @@
 ﻿
 using Modelos;
+using Controllers;
 using System;
 
 namespace ConsoleView
@@ -18,7 +19,7 @@ namespace ConsoleView
         }
         private static OpcoesMenuPrincipal Menu()
         {
-
+            Console.WriteLine("");
             Console.WriteLine("Escolha sua opção");
             Console.WriteLine("");
 
@@ -29,7 +30,7 @@ namespace ConsoleView
             Console.WriteLine("3 - Excluir Cliente");
 
             Console.WriteLine(" - Geral - ");
-            Console.WriteLine("4 - Lipar Tela");
+            Console.WriteLine("4 - Limpar Tela");
             Console.WriteLine("6 - Sair");
 
             string opcao = Console.ReadLine();
@@ -48,7 +49,8 @@ namespace ConsoleView
                 switch (opcaoDigitada)
                 {
                     case OpcoesMenuPrincipal.CadastrarCliente:
-                        CadastrarCliente();
+                        Cliente cliente = CadastrarCliente();
+                        ExbirCliente(cliente);
                         break;
                     case OpcoesMenuPrincipal.PesquisarCliente:
                         break;
@@ -77,7 +79,7 @@ namespace ConsoleView
             return new Cliente();
         }
 
-        private static void CadastrarCliente()
+        private static Cliente CadastrarCliente()
         {
             Cliente cliente = new Cliente();
 
@@ -109,8 +111,11 @@ namespace ConsoleView
             Console.WriteLine("Digite complemento:");
             cliente._Endereco.Complemento = Console.ReadLine();
 
+            ClienteController cc = new ClienteController();
+            cc.SalvarCliente(cliente);
 
-            ExbirCliente(cliente);
+            return cliente;
+           
 
 
 
@@ -118,6 +123,11 @@ namespace ConsoleView
 
         private static void ExbirCliente(Cliente cliente)
         {
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("-------Cliente Cadastrado---------");
+            Console.WriteLine("");
+            Console.WriteLine("ID:" + cliente.PessoaID);
             Console.WriteLine("Nome do cliente: " + cliente.Nome);
             Console.WriteLine("CPF do cliente: " + cliente.Cpf);
             Console.WriteLine("");
@@ -125,6 +135,9 @@ namespace ConsoleView
             Console.WriteLine("Nome da Rua: " + cliente._Endereco.Rua);
             Console.WriteLine("Numero da casa: " + cliente._Endereco.Numero);
             Console.WriteLine("Complemento: " + cliente._Endereco.Complemento);
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("");
 
 
         }
