@@ -10,16 +10,13 @@ namespace Controllers
     
     public class ClienteController
     {
-        public List<Cliente> MeusClientes { get; set; }
+        static List<Cliente> MeusClientes = new List<Cliente>();
         public void SalvarCliente(Cliente cliente)
         {
 
             MeusClientes.Add(cliente);
     
         }
-        public ClienteController()
-        {
-            MeusClientes = new List<Cliente>();
-        }
+
     }
 }
