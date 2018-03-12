@@ -18,5 +18,21 @@ namespace Controllers
     
         }
 
+        public Cliente BuscarClientePorNome(string nome)
+        {
+            
+                var c = from x in MeusClientes
+                            where x.Nome.Equals(nome)
+                            select x;
+
+            if (c != null){
+                return c.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }

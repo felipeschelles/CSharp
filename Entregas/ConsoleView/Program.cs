@@ -53,6 +53,8 @@ namespace ConsoleView
                         ExbirCliente(cliente);
                         break;
                     case OpcoesMenuPrincipal.PesquisarCliente:
+                        Cliente clienteBusca = PesquisarCliente();
+                        ExbirCliente(clienteBusca);
                         break;
                     case OpcoesMenuPrincipal.EditarCliente:
                         break;
@@ -76,7 +78,11 @@ namespace ConsoleView
 
         private static Cliente PesquisarCliente()
         {
-            return new Cliente();
+            Console.WriteLine("Nome do cliente pesquisado");
+            String cliente = Console.ReadLine();
+            ClienteController cc = new ClienteController();
+            Cliente ClienteRetornado =cc.BuscarClientePorNome(cliente);
+            return ClienteRetornado;
         }
 
         private static Cliente CadastrarCliente()
