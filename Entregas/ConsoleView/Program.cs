@@ -79,8 +79,22 @@ namespace ConsoleView
 
         private static void ExcluirCliente()
         {
+            ClienteController cc = new ClienteController();
             Console.WriteLine("Digite o ID do cliente que deseja excluir: ");
             int idCliente = Console.Read();
+            Boolean status = cc.ExcluirCliente(idCliente);
+            if (status)
+            {
+                Console.WriteLine();
+                Console.WriteLine(" -- Excluido com sucesso -- ");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine(" -- Cliente nao encontrado --");
+                Console.WriteLine();
+            }
         }
 
         private static Cliente PesquisarCliente()

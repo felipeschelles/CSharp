@@ -11,9 +11,12 @@ namespace Controllers
     public class ClienteController
     {
         static List<Cliente> MeusClientes = new List<Cliente>();
+        static int ultimoID = 0;
         public void SalvarCliente(Cliente cliente)
         {
 
+            int id = ultimoID = + 1;
+            cliente.PessoaID = id;
             MeusClientes.Add(cliente);
     
         }
@@ -56,20 +59,20 @@ namespace Controllers
 
             Cliente cliente = BuscarClientePorID(ID);
 
-            var c = from x in MeusClientes
-                    where x.Equals(cliente)
-                    
-                    
-                    
+            if (cliente != null)
+            {
+                MeusClientes.Remove(cliente);
+                return true;
 
-            if (c != null)
+            }else
             {
-                return c.FirstOrDefault();
+                return false;
             }
-            else
-            {
-                return null;
-            }
+
+
+
+
+
         }
 
     }
