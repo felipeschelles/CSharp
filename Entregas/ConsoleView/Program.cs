@@ -57,6 +57,7 @@ namespace ConsoleView
                         ExbirCliente(clienteBusca);
                         break;
                     case OpcoesMenuPrincipal.EditarCliente:
+                        ExcluirCliente()
                         break;
                     case OpcoesMenuPrincipal.ExcluirCliente:
                         break;
@@ -76,13 +77,30 @@ namespace ConsoleView
             
         }
 
+        private static void ExcluirCliente()
+        {
+            Console.WriteLine("Digite o ID do cliente que deseja excluir: ");
+            int idCliente = Console.Read();
+        }
+
         private static Cliente PesquisarCliente()
         {
-            Console.WriteLine("Nome do cliente pesquisado");
-            String cliente = Console.ReadLine();
+            Console.WriteLine("Nome do cliente pesquisado: ");
+            String nome = Console.ReadLine();
             ClienteController cc = new ClienteController();
-            Cliente ClienteRetornado =cc.BuscarClientePorNome(cliente);
-            return ClienteRetornado;
+            Cliente ClienteRetornado =cc.BuscarClientePorNome(nome);
+            if (ClienteRetornado != null)
+            {
+                return ClienteRetornado;
+            }else
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine(" -- Cliente não encontrado -- ");
+                Console.WriteLine();
+                return null;
+            }
+            
         }
 
         private static Cliente CadastrarCliente()
