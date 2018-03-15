@@ -61,9 +61,10 @@ namespace ConsoleView
                         ExbirCliente(clienteBusca);
                         break;
                     case OpcoesMenuPrincipal.EditarCliente:
-                        ExcluirCliente();
+                        EditarCliente();
                         break;
                     case OpcoesMenuPrincipal.ExcluirCliente:
+                        ExcluirCliente();
                         break;
                     case OpcoesMenuPrincipal.ListarClientes:
                         ListarClientes();
@@ -84,6 +85,78 @@ namespace ConsoleView
             
         }
 
+        private static void EditarCliente()
+        {
+            Console.WriteLine();
+            Console.WriteLine(" -- Clientes Cadastrados --");
+
+            ClienteController cc = new ClienteController();
+            List<Cliente> lista = cc.ListarClientes();
+
+            if (lista.Count > 0)
+            {
+                foreach (Cliente cli in lista)
+                {
+                    ExbirCliente(cli);
+
+                }
+                Console.WriteLine("Digite o ID do cliente: ");
+                int ID = Console.Read();
+                Cliente clienteEditado = cc.BuscarClientePorID(ID);
+                if (ClienteEditado != null)
+                {
+                    
+
+                    Console.WriteLine("Digite o nome:");
+                    clienteEditado.Nome = Console.ReadLine();
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("Digite o cpf:");
+                    clienteEditado.Cpf = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("");
+
+
+                    clienteEditado._Endereco = new Endereco();
+
+                    Console.WriteLine("Endereço");
+                    Console.WriteLine("");
+                    Console.WriteLine("Digite o nome da Rua:");
+                    clienteEditado._Endereco.Rua = Console.ReadLine();
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("Digite o numero:");
+                    clienteEditado._Endereco.Numero = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("Digite complemento:");
+                    clienteEditado._Endereco.Complemento = Console.ReadLine();
+
+                    ClienteController cc = new ClienteController();
+                    cc.EditarContaCliente(clienteEditado);
+
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine(" -- Cliente não encontrado -- ");
+                    Console.WriteLine();
+         
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nao existe clientes cadastrados para editar!");
+            }
+
+           
+
+        }
+
         private static void ListarClientes()
         {
             Console.WriteLine();
@@ -92,10 +165,18 @@ namespace ConsoleView
             ClienteController cc = new ClienteController();
             List<Cliente> lista = cc.ListarClientes();
 
-            foreach (Cliente cli in lista)
+            if (lista.Count>0)
             {
-                ExbirCliente(cli);
+                foreach (Cliente cli in lista)
+                {
+                    ExbirCliente(cli);
+                }
             }
+            else
+            {
+                Console.WriteLine("Nao existe clientes cadastrados!");
+            }
+           
 
         }
 

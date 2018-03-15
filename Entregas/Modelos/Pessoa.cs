@@ -11,6 +11,6 @@ namespace Modelos
 
         public int EnderecoID { get; set; }
 
-        public Endereco _Endereco { get; set; }
+     //   public Endereco _Endereco { get; set; }
     }
 }

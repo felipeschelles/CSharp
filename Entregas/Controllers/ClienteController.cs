@@ -76,5 +76,18 @@ namespace Controllers
         {
             return MeusClientes;
         }
+
+
+        public Cliente EditarContaCliente(Cliente clienteEditado)
+        {
+            foreach (Cliente x in MeusClientes)
+            {
+                if (clienteEditado.PessoaID == x.PessoaID)
+                {
+                   
+                }
+            }
+        }
+
     }
 }
