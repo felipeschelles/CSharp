@@ -70,10 +70,11 @@ namespace Controllers
             }
 
 
-
-
-
         }
 
+        public List<Cliente> ListarClientes()
+        {
+            return MeusClientes;
+        }
     }
 }
