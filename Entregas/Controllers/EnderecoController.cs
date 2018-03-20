@@ -7,46 +7,31 @@ using System.Threading.Tasks;
 
 namespace Controllers
 {
-    class EnderecoController
+    public class EnderecoController
     {
-        static List<Endereco> MeusEndereco = new List<Endereco>();
+        static List<Endereco> MeusEnderecos = new List<Endereco>();
         static int ultimoID = 0;
         public void SalvarEndereco(Endereco endereco)
         {
 
             int id = ultimoID = +1;
-            Endereco.PessoaID = id;
-            MeusEndereco.Add(Endereco);
+            endereco.EnderecoID = id;
+            MeusEnderecos.Add(endereco);
 
         }
 
-        public Endereco BuscarClientePorNome(string nome)
+     
+
+        public Endereco BuscarEnderecoPorID(int ID)
         {
 
-            var c = from x in MeusClientes
-                    where x.Nome.ToLower().Contains(nome.Trim().ToLower())
+            var e = from x in MeusEnderecos
+                    where x.EnderecoID.Equals(ID)
                     select x;
 
-            if (c != null)
+            if (e != null)
             {
-                return c.FirstOrDefault();
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public Cliente BuscarClientePorID(int ID)
-        {
-
-            var c = from x in MeusClientes
-                    where x.PessoaID.Equals(ID)
-                    select x;
-
-            if (c != null)
-            {
-                return c.FirstOrDefault();
+                return e.FirstOrDefault();
             }
             else
             {
@@ -61,7 +46,7 @@ namespace Controllers
 
             if (endereco != null)
             {
-                MeusEndereco.Remove(endereco);
+                MeusEnderecos.Remove(endereco);
                 return true;
 
             }
@@ -75,21 +60,21 @@ namespace Controllers
 
         public List<Endereco> ListarEnderecos()
         {
-            return MeusEndereco;
+            return MeusEnderecos;
         }
 
 
-        public Cliente EditarEndereco(Endereco enderecoEditado)
-        {
-            foreach (Endereco x in MeusEndereco)
-            {
-                if (enderecoEditado.PessoaID == x.PessoaID)
-                {
+     //   public Endereco EditarEndereco(Endereco enderecoEditado)
+     //   {
+     //       foreach (Endereco x in MeusEnderecos)
+     //       {
+     //           if (enderecoEditado.EnderecoID == x.EnderecoID)
+     //           {
 
-                }
-            }
-        }
+    //            }
+    //        }
+    //    }
 
-    }
+   // }
 }
 }
