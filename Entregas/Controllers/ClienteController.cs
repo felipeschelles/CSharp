@@ -78,16 +78,16 @@ namespace Controllers
         }
 
 
-        public Cliente EditarContaCliente(Cliente clienteEditado)
-        {
-            foreach (Cliente x in MeusClientes)
-            {
-                if (clienteEditado.PessoaID == x.PessoaID)
-                {
-                   
-                }
-            }
-        }
+       // public Cliente EditarContaCliente(Cliente clienteEditado)
+       // {
+       //     foreach (Cliente x in MeusClientes)
+       //     {
+       //         if (clienteEditado.PessoaID == x.PessoaID)
+       //         {
+       //           
+       //         }
+       //     }
+       // }
 
     }
 }

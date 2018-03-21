@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,21 +9,21 @@ namespace Controllers
 {
     class EntregadorController
     {
-        static List<Cliente> MeusClientes = new List<Cliente>();
+        static List<Entregador> MeusEntregadores = new List<Entregador>();
         static int ultimoID = 0;
-        public void SalvarCliente(Cliente cliente)
+        public void SalvarCliente(Entregador entregador)
         {
 
             int id = ultimoID = +1;
-            cliente.PessoaID = id;
-            MeusClientes.Add(cliente);
+            entregador.PessoaID = id;
+            MeusEntregadores.Add(entregador);
 
         }
 
-        public Cliente BuscarClientePorNome(string nome)
+        public Entregador BuscarEntregadorPorNome(string nome)
         {
 
-            var c = from x in MeusClientes
+            var c = from x in MeusEntregadores
                     where x.Nome.ToLower().Contains(nome.Trim().ToLower())
                     select x;
 
@@ -36,16 +37,16 @@ namespace Controllers
             }
         }
 
-        public Cliente BuscarClientePorID(int ID)
+        public Entregador BuscarEntregadorPorID(int ID)
         {
 
-            var c = from x in MeusClientes
+            var e = from x in MeusEntregadores
                     where x.PessoaID.Equals(ID)
                     select x;
 
-            if (c != null)
+            if (e != null)
             {
-                return c.FirstOrDefault();
+                return e.FirstOrDefault();
             }
             else
             {
@@ -53,14 +54,14 @@ namespace Controllers
             }
         }
 
-        public Boolean ExcluirCliente(int ID)
+        public Boolean ExcluirEntregador(int ID)
         {
 
-            Cliente cliente = BuscarClientePorID(ID);
+            Entregador entregador = BuscarEntregadorPorID(ID);
 
-            if (cliente != null)
+            if (entregador != null)
             {
-                MeusClientes.Remove(cliente);
+                MeusEntregadores.Remove(entregador);
                 return true;
 
             }
@@ -72,23 +73,23 @@ namespace Controllers
 
         }
 
-        public List<Cliente> ListarClientes()
+        public List<Entregador> ListarEntregadores()
         {
-            return MeusClientes;
+            return MeusEntregadores;
         }
 
 
-        public Cliente EditarContaCliente(Cliente clienteEditado)
-        {
-            foreach (Cliente x in MeusClientes)
-            {
-                if (clienteEditado.PessoaID == x.PessoaID)
-                {
+  //     public Entregador EditarContaEntregador(Entregador EntregadorEditado)
+  //      {
+  //          foreach (Entregador x in MeusEntregadores)
+  //          {
+  //              if (EntregadorEditado.PessoaID == x.PessoaID)
+  //              {
 
-                }
-            }
-        }
-
+   //              }
+   //          }
+   //     }
+        
     }
 }
-}
+

@@ -2,6 +2,7 @@
 using Modelos;
 using Controllers;
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleView
 {
@@ -13,9 +14,10 @@ namespace ConsoleView
             CadastrarCliente=1,
             PesquisarCliente=2,
             EditarCliente=3,
-            ExcluirCliente=4,
-            LimparTela=5,
-            Sair=6,
+            ListarClientes=4,
+            ExcluirCliente=5,
+            LimparTela=6,
+            Sair=7,
         }
         private static OpcoesMenuPrincipal Menu()
         {
@@ -27,11 +29,12 @@ namespace ConsoleView
             Console.WriteLine("1 - Cadastrar Novo");
             Console.WriteLine("2 - Pesquisar Cliente");
             Console.WriteLine("3 - Editar Cliente");
-            Console.WriteLine("3 - Excluir Cliente");
+            Console.WriteLine("4 - Listar Clientes");
+            Console.WriteLine("5 - Excluir Cliente");
 
             Console.WriteLine(" - Geral - ");
-            Console.WriteLine("4 - Limpar Tela");
-            Console.WriteLine("6 - Sair");
+            Console.WriteLine("6 - Limpar Tela");
+            Console.WriteLine("7 - Sair");
 
             string opcao = Console.ReadLine();
             return (OpcoesMenuPrincipal)int.Parse(opcao);
@@ -62,6 +65,9 @@ namespace ConsoleView
                     case OpcoesMenuPrincipal.ExcluirCliente:
                         ExcluirCliente();
                         break;
+                    case OpcoesMenuPrincipal.ListarClientes:
+                        ListarClientes();
+                        break;
                     case OpcoesMenuPrincipal.LimparTela:
                         break;
                     case OpcoesMenuPrincipal.Sair:
@@ -76,6 +82,17 @@ namespace ConsoleView
             }
 
             
+        }
+
+        private static void ListarClientes()
+        {
+            ClienteController cc = new ClienteController();
+            List<Cliente> clientes = cc.ListarClientes();
+
+            foreach (var cliente in clientes)
+            {
+                ExibirCliente(cliente);
+            }
         }
 
         private static void EditarCliente()
